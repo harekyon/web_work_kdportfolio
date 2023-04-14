@@ -1,0 +1,17 @@
+.main {
+  display: flex;
+  flex-direction: row;
+}
+.menu {
+  width: 20%;
+  height: 100vh;
+  flex-grow: 2;
+  background: cornflowerblue;
+  &-photo-list {
+    list-style: none;
+  }
+}
+.slide {
+  width: 80%;
+  background: cadetblue;
+}
