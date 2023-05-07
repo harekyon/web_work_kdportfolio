@@ -32,9 +32,8 @@ export default function Slider({ imgPreset, setSlideNum, setControler }) {
         >
           {imgPreset.map((i, idx) => {
             return (
-              <SplideSlide>
+              <SplideSlide key={idx}>
                 <img
-                  key={idx}
                   className={styles["slider__img"]}
                   src={i.img}
                   alt={i.alt}

@@ -165,6 +165,7 @@ export default function Home() {
             {imgPreset.map((i, idx) => {
               return (
                 <button
+                  key={idx}
                   className={styles["pagination__num"]}
                   onClick={() => {
                     controler.go(idx);
