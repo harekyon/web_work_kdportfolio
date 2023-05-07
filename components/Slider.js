@@ -1,89 +1,60 @@
-import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
-import "@splidejs/splide/css"; // デフォルトのテーマを読み込んでいます（コアスタイルのみ読み込む設定も可能）
-
-export default function Slider() {
+import styles from "./Slider.module.scss";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+import "@splidejs/react-splide/css";
+import { useEffect, useRef } from "react";
+export default function Slider({ imgObj, imgState }) {
+  const ref = useRef();
+  useEffect(() => {
+    console.log(ref.current);
+  }, []);
   return (
     <>
-      <Splide
-        aria-label="私のお気に入りの画像集"
-        options={{
-          type: "loop",
-          gap: "1rem",
-          drag: false,
-          autoplay: true,
-          pauseOnHover: true,
-          pauseOnForcus: true,
-          resetProgress: false,
-          focus: "center",
-          pagination: false,
-          arrows: true,
-          interval: 2000,
-          autoWidth: true,
-          autoHeight: true,
-        }}
-        hasAutoplayProgress={true}
-        aria-labelledby="autoplay-example-heading"
-        hasTrack={false}
-      >
-        <SplideTrack>
-          <SplideSlide>
-            <img
-              className="slide-img"
-              src="https://images.squarespace-cdn.com/content/v1/5a2f39bba9db09ee7335b85a/1565301606403-55ZAEF5FN07C8AA039TI/07_S3K6333.jpg"
-              alt="かわいい猫の画像 part1"
-            />
-          </SplideSlide>
-          <SplideSlide>
-            <img
-              className="slide-img"
-              src="https://images.squarespace-cdn.com/content/v1/5a2f39bba9db09ee7335b85a/1565301591657-5FFNAHHAJICJWKLAZ9HV/01_S3K6237.jpg"
-              alt="かわいい猫の画像 part1"
-            />
-          </SplideSlide>
-          <SplideSlide>
-            <img
-              className="slide-img"
-              src="https://www.pakutaso.com/shared/img/thumb/shikun20220402_114719-2_TP_V.jpg"
-              alt="かわいい猫の画像 part1"
-            />
-          </SplideSlide>
-        </SplideTrack>
+      <div className={styles["slider--wrap"]}>
+        {/* <div className={styles["slider--button-wrap"]}>
+          <div className={styles["slider__prev-button"]}></div>
+          <div className={styles["slider__next-button"]}></div>
+        </div> */}
 
-        {/* 画像の高さを揃えて表示させるために以下スタイルを適用 */}
-        <style jsx>{`
-          .splide {
-            width: 100vw;
-          }
-          .slide-img {
-            display: block;
-            width: 100%;
-            max-height: 100vh;
-            object-fit: cover;
-          }
-          .splide__track {
-            height: 40vw;
-          }
-          .splide__slide {
-            display: flex;
-            justify-content: center; /* 左右の中央揃え */
-          }
-          .splide__slide img {
-            align-self: center;
-            max-height: 100%;
-            width: 100%;
-          }
-          .splide--wrap {
-            position: relative;
-          }
-          .slide-img {
-            display: block;
-            // width: 100%;
-            max-height: 100vh;
-            //padding-top:100%;
-            object-fit: cover;
-          }
-        `}</style>
-      </Splide>
+        <Splide
+          options={{
+            loop: true,
+            type: "fade",
+            rewind: true,
+            autoplay: true,
+            pauseOnHover: false,
+            interval: 5000,
+          }}
+          aria-label="お気に入りの写真"
+          ref={ref}
+        >
+          {imgObj.map((i, idx) => {
+            return (
+              <SplideSlide>
+                <img
+                  key={idx}
+                  className={styles["slider__img"]}
+                  src={i.img}
+                  alt={i.alt}
+                />
+              </SplideSlide>
+            );
+          })}
+        </Splide>
+        {/* {imgObj.map((i) => {
+          return (
+            // <div className={styles[""]}>
+            <img className={styles["slider__img"]} src={i.img} alt={i.alt} />
+            // </div>
+          );
+        })} */}
+
+        {/* <SplideSlide>
+          <img src="image1.jpg" alt="Image 1" />
+        </SplideSlide>
+        <SplideSlide>
+          <img src="image2.jpg" alt="Image 2" />
+        </SplideSlide> */}
+      </div>
     </>
   );
 }

@@ -3,10 +3,26 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.scss";
 import Slider from "@/components/Slider";
+import { useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const [imgState, setImgState] = useState();
+  const imgObj = [
+    {
+      img: "https://images.squarespace-cdn.com/content/v1/5a2f39bba9db09ee7335b85a/1565301606403-55ZAEF5FN07C8AA039TI/07_S3K6333.jpg",
+      alt: "part1",
+    },
+    {
+      img: "https://images.squarespace-cdn.com/content/v1/5a2f39bba9db09ee7335b85a/1565301591657-5FFNAHHAJICJWKLAZ9HV/01_S3K6237.jpg",
+      alt: "part2",
+    },
+    {
+      img: "https://www.pakutaso.com/shared/img/thumb/shikun20220402_114719-2_TP_V.jpg",
+      alt: "part3",
+    },
+  ];
   return (
     <>
       <Head>
@@ -36,7 +52,11 @@ export default function Home() {
           </ul>
         </section>
         <section className={styles["slide"]}>
-          <Slider />
+          <Slider
+            imgObj={imgObj}
+            imgState={imgState}
+            setImgState={setImgState}
+          />
         </section>
       </main>
     </>
