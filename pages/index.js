@@ -4,10 +4,11 @@ import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.scss";
 import Slider from "@/components/Slider";
 import { useEffect, useState } from "react";
+import { client } from "../libs/client";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+export default function Home({ blog }) {
   const imgObj1 = [
     {
       img: "https://images.squarespace-cdn.com/content/v1/5a2f39bba9db09ee7335b85a/1565301606403-55ZAEF5FN07C8AA039TI/07_S3K6333.jpg",
@@ -109,6 +110,7 @@ export default function Home() {
   const [slideNum, setSlideNum] = useState("1");
   const [controler, setControler] = useState();
 
+  // console.log(blog);
   return (
     <>
       <Head>
@@ -190,3 +192,19 @@ export default function Home() {
     </>
   );
 }
+export const getStaticProps = async () => {
+  const data = await client
+    .get({ endpoint: "blog" })
+    .then((res) => {
+      return res.contents;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
+  return {
+    props: {
+      blog: data,
+    },
+  };
+};
