@@ -51,12 +51,13 @@
   }
 }
 .logo {
-  font-size: 18px;
-  color: rgb(6, 62, 62);
-  // font-family: "Libre Barcode 39", cursive;
-  font-family: "Noto Serif", serif;
-  // font-family: "Bruno Ace SC", cursive;
-  // font-family: "Bad Script", cursive;
-
+  a {
+    font-size: 18px;
+    color: rgb(6, 62, 62);
+    // font-family: "Libre Barcode 39", cursive;
+    font-family: "Noto Serif", serif;
+    // font-family: "Bruno Ace SC", cursive;
+    // font-family: "Bad Script", cursive;
+  }
   margin-bottom: 26px;
 }
