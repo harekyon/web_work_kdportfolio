@@ -5,6 +5,9 @@ const nextConfig = {
     emotion: true,
   },
   images: { unoptimized: true },
+  assetPrefix: prefixPath,
+  basePath: prefixPath,
+  reactStrictMode: true,
 };
 
 module.exports = nextConfig;
