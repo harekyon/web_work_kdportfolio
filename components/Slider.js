@@ -35,8 +35,8 @@ export default function Slider({ imgPreset, setSlideNum, setControler }) {
               <SplideSlide key={idx}>
                 <img
                   className={styles["slider__img"]}
-                  src={i.img}
-                  alt={i.alt}
+                  src={i.url}
+                  alt={`kd photo ${idx}`}
                 />
               </SplideSlide>
             );

@@ -19,6 +19,10 @@ li {
   font-family: "Knewave", cursive;
   font-family: "Gamja Flower", cursive;
 }
+.main {
+  display: flex;
+  flex-direction: row;
+}
 
 .splide__slide {
   img {

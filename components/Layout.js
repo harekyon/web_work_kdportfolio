@@ -4,13 +4,12 @@ import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.scss";
 import Slider from "@/components/Slider";
 import { useEffect, useState } from "react";
-import { client } from "../libs/client";
 import { css } from "@emotion/react";
 import Link from "next/link";
 import Menu from "@/components/menu";
 import { useRouter } from "next/router";
 
-export default function Home({ works }) {
+export default function Home({ works, children }) {
   const router = useRouter();
   const [imgPreset, setImagePreset] = useState(works.photos[0].img);
   const [slideNum, setSlideNum] = useState(1);
@@ -34,31 +33,9 @@ export default function Home({ works }) {
           controler={controler}
           router={router}
         ></Menu>
-        <section className={styles["slide"]}>
-          <Slider
-            imgPreset={imgPreset}
-            setImagePreset={setImagePreset}
-            setSlideNum={setSlideNum}
-            setControler={setControler}
-          />
-        </section>
+
+        {children}
       </main>
     </>
   );
 }
-export const getStaticProps = async () => {
-  const data = await client
-    .get({ endpoint: "works" })
-    .then((res) => {
-      return res;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-
-  return {
-    props: {
-      works: data,
-    },
-  };
-};
