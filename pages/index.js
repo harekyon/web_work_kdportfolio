@@ -12,10 +12,10 @@ import { useRouter } from "next/router";
 
 export default function Home({ works }) {
   const router = useRouter();
+  // const [imgPreset, setImagePreset] = useState("");
   const [imgPreset, setImagePreset] = useState(works.photos[0].img);
   const [slideNum, setSlideNum] = useState(1);
   const [controler, setControler] = useState("1");
-  console.log(works);
   return (
     <>
       <Head>

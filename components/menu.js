@@ -20,10 +20,9 @@ export default function Menu({
     <section className={styles["menu"]}>
       <div className={styles["logo"]}>DAIKI KATO</div>
       <nav className={styles["menu-photo-list"]}>
-        {works.photos.map((p) => {
-          console.log(p);
+        {works.photos.map((p, idx) => {
           return (
-            <li>
+            <li key={idx}>
               <Link
                 href={{ query: { folder: `${p.title}` } }}
                 onClick={() => {

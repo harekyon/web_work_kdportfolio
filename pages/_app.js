@@ -1,27 +1,13 @@
 import "@/styles/globals.scss";
 import "@/styles/splide.scss";
-import Layout from "../components/Layout";
+import { useEffect, useState } from "react";
+// import { client } from "@/libs/client";
+// import Layout from "../components/Layout";
 
-export default function App({ Component, pageProps, works }) {
+export default function App({ Component, pageProps }) {
   return (
-    // <Layout works={works}>
+    // <Layout>
     <Component {...pageProps} />
     // </Layout>
   );
 }
-// export const getStaticProps = async () => {
-//   const data = await client
-//     .get({ endpoint: "works" })
-//     .then((res) => {
-//       return res;
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-
-//   return {
-//     props: {
-//       works: data,
-//     },
-//   };
-// };

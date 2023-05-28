@@ -6,7 +6,7 @@ export default function Slider({ imgPreset, setSlideNum, setControler }) {
   const ref = useRef();
   useEffect(() => {
     // console.log(ref.current.splide.Components.Controller);
-    console.log(ref.current.splide.Components.Controller);
+    // console.log(ref.current.splide.Components.Controller);
     setControler(ref.current.splide.Components.Controller);
     // ref.current.splide.Controller;
   }, []);
