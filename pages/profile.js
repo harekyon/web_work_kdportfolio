@@ -24,7 +24,7 @@ export default function Home({ works }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="main">
+      <main className={styles["main"]}>
         <Menu
           works={works}
           imgPreset={imgPreset}
@@ -32,16 +32,8 @@ export default function Home({ works }) {
           slideNum={slideNum}
           setSlideNum={setSlideNum}
           controler={controler}
-          router={router}
         ></Menu>
-        <section className={styles["slide"]}>
-          <Slider
-            imgPreset={imgPreset}
-            setImagePreset={setImagePreset}
-            setSlideNum={setSlideNum}
-            setControler={setControler}
-          />
-        </section>
+        <section>aaaaaaa</section>
       </main>
     </>
   );

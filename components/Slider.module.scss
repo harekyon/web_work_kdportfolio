@@ -14,24 +14,4 @@
     object-fit: contain;
     // position: absolute;
   }
-  &--button-wrap {
-    width: 100%;
-    height: 100vh;
-    position: absolute;
-    display: flex;
-    flex-direction: row;
-    z-index: 100;
-  }
-  &__prev-button {
-    width: 50%;
-    height: 100vh;
-    background: red;
-    opacity: 0.4;
-  }
-  &__next-button {
-    width: 50%;
-    height: 100vh;
-    background: blue;
-    opacity: 0.4;
-  }
 }

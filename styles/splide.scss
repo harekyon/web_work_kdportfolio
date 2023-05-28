@@ -2,6 +2,7 @@
   height: 100vh;
 }
 .splide__slide {
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,7 +15,7 @@
   position: absolute;
   column-gap: 20px;
 }
-.splide__arrow {
+.splide__arrow--hk {
   width: 50%;
   height: 100vh;
   background: unset;
@@ -23,10 +24,20 @@
   margin: 0;
   padding: 0;
   position: unset;
+  z-index: 100;
   svg {
     display: none;
   }
   &:hover {
     cursor: pointer;
   }
+}
+
+.splide__pagination {
+  counter-reset: pagination-num;
+}
+
+.splide__pagination__page:before {
+  counter-increment: pagination-num;
+  content: counter(pagination-num);
 }

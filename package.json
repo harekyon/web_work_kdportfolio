@@ -4,14 +4,16 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next export",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.0",
     "@splidejs/react-splide": "^0.7.12",
     "eslint": "8.37.0",
     "eslint-config-next": "13.2.4",
+    "microcms-js-sdk": "^2.4.0",
     "next": "13.2.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
