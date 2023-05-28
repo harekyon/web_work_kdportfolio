@@ -32,7 +32,25 @@ export default function Home({ works }) {
       </Head>
       <main className="main">
         {viewWidth < 767 ? (
-          <div></div>
+          <>
+            <Menu
+              works={works}
+              imgPreset={imgPreset}
+              setImagePreset={setImagePreset}
+              slideNum={slideNum}
+              setSlideNum={setSlideNum}
+              controler={controler}
+              router={router}
+            ></Menu>
+            <section className={styles["slide"]}>
+              <Slider
+                imgPreset={imgPreset}
+                setImagePreset={setImagePreset}
+                setSlideNum={setSlideNum}
+                setControler={setControler}
+              />
+            </section>
+          </>
         ) : (
           <>
             <Menu
