@@ -18,7 +18,9 @@ export default function Menu({
 }) {
   return (
     <section className={styles["menu"]}>
-      <div className={styles["logo"]}>DAIKI KATO</div>
+      <div className={styles["logo"]}>
+        <Link href="./">DAIKI KATO</Link>
+      </div>
       <nav className={styles["menu-photo-list"]}>
         {works.photos.map((p, idx) => {
           return (

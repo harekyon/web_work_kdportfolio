@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.scss";
 import Slider from "@/components/Slider";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { client } from "../libs/client";
 import { css } from "@emotion/react";
 import Link from "next/link";
@@ -16,6 +16,12 @@ export default function Home({ works }) {
   const [imgPreset, setImagePreset] = useState(works.photos[0].img);
   const [slideNum, setSlideNum] = useState(1);
   const [controler, setControler] = useState("1");
+  const [viewWidth, setViewWidth] = useState(0);
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      setViewWidth(window.innerWidth);
+    });
+  }, []);
   return (
     <>
       <Head>
@@ -25,23 +31,29 @@ export default function Home({ works }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="main">
-        <Menu
-          works={works}
-          imgPreset={imgPreset}
-          setImagePreset={setImagePreset}
-          slideNum={slideNum}
-          setSlideNum={setSlideNum}
-          controler={controler}
-          router={router}
-        ></Menu>
-        <section className={styles["slide"]}>
-          <Slider
-            imgPreset={imgPreset}
-            setImagePreset={setImagePreset}
-            setSlideNum={setSlideNum}
-            setControler={setControler}
-          />
-        </section>
+        {viewWidth < 767 ? (
+          <div></div>
+        ) : (
+          <>
+            <Menu
+              works={works}
+              imgPreset={imgPreset}
+              setImagePreset={setImagePreset}
+              slideNum={slideNum}
+              setSlideNum={setSlideNum}
+              controler={controler}
+              router={router}
+            ></Menu>
+            <section className={styles["slide"]}>
+              <Slider
+                imgPreset={imgPreset}
+                setImagePreset={setImagePreset}
+                setSlideNum={setSlideNum}
+                setControler={setControler}
+              />
+            </section>
+          </>
+        )}
       </main>
     </>
   );
