@@ -26,6 +26,13 @@ li {
 a {
   text-decoration: none;
 }
+html,
+body {
+  overflow-x: hidden;
+}
+body {
+  position: relative;
+}
 
 .splide__slide {
   img {

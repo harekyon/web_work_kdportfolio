@@ -1,6 +1,8 @@
+@use "../styles/var";
 .menu {
-  width: 300px;
+  width: 150px;
   min-width: 300px;
+  max-width: 150px;
   height: 100vh;
   flex-grow: 2;
   padding: 100px 50px 0 70px;
@@ -60,4 +62,33 @@
     // font-family: "Bad Script", cursive;
   }
   margin-bottom: 26px;
+}
+
+@include var.mq(sp) {
+  .menu {
+    width: 100%;
+    min-width: unset;
+    max-width: unset;
+    // background: red;
+    position: absolute;
+    z-index: 10;
+    padding: 100px 70px;
+    &-photo-list {
+      a {
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        @include var.font(30, 1.5, 0.05, 400);
+      }
+    }
+  }
+  .logo {
+    text-align: center;
+    a {
+      @include var.font(24, 1.5, 0.05, 400);
+    }
+  }
+  .pagination {
+    display: none;
+  }
 }

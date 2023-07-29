@@ -17,10 +17,13 @@ export default function Home({ works }) {
   const [slideNum, setSlideNum] = useState(1);
   const [controler, setControler] = useState("1");
   const [viewWidth, setViewWidth] = useState(0);
+  const onResizeFunc = () => {
+    setViewWidth(window.innerWidth);
+    console.log("aaa");
+  };
   useEffect(() => {
-    window.addEventListener("resize", () => {
-      setViewWidth(window.innerWidth);
-    });
+    onResizeFunc();
+    window.addEventListener("resize", onResizeFunc);
   }, []);
   return (
     <>
@@ -42,14 +45,26 @@ export default function Home({ works }) {
               controler={controler}
               router={router}
             ></Menu>
+            <></>
             <section className={styles["slide"]}>
               <Slider
+                viewWidth={viewWidth}
                 imgPreset={imgPreset}
                 setImagePreset={setImagePreset}
                 setSlideNum={setSlideNum}
                 setControler={setControler}
               />
             </section>
+            <button
+              className={styles["sp-menu__button"]}
+              onClick={(() => {
+                console.log("run!!!");
+              })()}
+            >
+              <div className={styles["sp-menu__stroke"]}></div>
+              <div className={styles["sp-menu__stroke"]}></div>
+              <div className={styles["sp-menu__stroke"]}></div>
+            </button>
           </>
         ) : (
           <>
@@ -64,6 +79,7 @@ export default function Home({ works }) {
             ></Menu>
             <section className={styles["slide"]}>
               <Slider
+                viewWidth={viewWidth}
                 imgPreset={imgPreset}
                 setImagePreset={setImagePreset}
                 setSlideNum={setSlideNum}
