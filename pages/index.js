@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.scss";
+import menuStyles from "@/components/menu.module.scss";
 import Slider from "@/components/Slider";
 import { useEffect, useRef, useState } from "react";
 import { client } from "../libs/client";
@@ -9,6 +10,7 @@ import { css } from "@emotion/react";
 import Link from "next/link";
 import Menu from "@/components/menu";
 import { useRouter } from "next/router";
+import variable from "../styles/_var.module.scss";
 
 export default function Home({ works }) {
   const router = useRouter();
@@ -17,14 +19,50 @@ export default function Home({ works }) {
   const [slideNum, setSlideNum] = useState(1);
   const [controler, setControler] = useState("1");
   const [viewWidth, setViewWidth] = useState(0);
+
+  const [menuState, setMenuState] = useState(false);
   const onResizeFunc = () => {
     setViewWidth(window.innerWidth);
-    console.log("aaa");
+    if (viewWidth < variable.breakpoint) console.log("aaa");
   };
   useEffect(() => {
     onResizeFunc();
+    menu_toggle_function();
     window.addEventListener("resize", onResizeFunc);
   }, []);
+
+  function menu_toggle_function() {
+    console.log(menuState);
+    const menuItem = document.getElementById("sp_menu");
+    console.log(getComputedStyle(menuItem).left);
+    if (menuState) {
+      menuItem.style.top = "0%";
+      menuItem.style.background = "#fefefe";
+      menuItem.classList.add(menuStyles["menu--open"]);
+      document.getElementsByTagName("html")[0].style.overflow = "hidden";
+      document
+        .getElementById("open-button")
+        .classList.add(styles["open-button-exe-animTotop"]);
+      document
+        .getElementById("close-button")
+        .classList.add(styles["close-button-exe-animTotop"]);
+    } else {
+      menuItem.style.top = "100%";
+      menuItem.style.background = "#fefefe";
+      menuItem.classList.remove(menuStyles["menu--open"]);
+      console.log(document.getElementsByTagName("html"));
+      document.getElementsByTagName("html")[0].style.overflow = "auto";
+      document
+        .getElementById("open-button")
+        .classList.remove(styles["open-button-exe-animTotop"]);
+      document
+        .getElementById("close-button")
+        .classList.remove(styles["close-button-exe-animTotop"]);
+    }
+  }
+  useEffect(() => {
+    menu_toggle_function();
+  }, [menuState]);
   return (
     <>
       <Head>
@@ -36,34 +74,64 @@ export default function Home({ works }) {
       <main className="main">
         {viewWidth < 767 ? (
           <>
-            <Menu
-              works={works}
-              imgPreset={imgPreset}
-              setImagePreset={setImagePreset}
-              slideNum={slideNum}
-              setSlideNum={setSlideNum}
-              controler={controler}
-              router={router}
-            ></Menu>
-            <></>
-            <section className={styles["slide"]}>
-              <Slider
-                viewWidth={viewWidth}
+            <div>
+              <div
+                className="logo"
+                css={css`
+                  width: 100%;
+                  height: 100px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                `}
+              >
+                <a>DAIKI KATO</a>
+              </div>
+              <Menu
+                works={works}
                 imgPreset={imgPreset}
                 setImagePreset={setImagePreset}
+                slideNum={slideNum}
                 setSlideNum={setSlideNum}
-                setControler={setControler}
-              />
-            </section>
+                controler={controler}
+                router={router}
+                id="sp_menu"
+                setMenuState={setMenuState}
+              ></Menu>
+              <></>
+              <section className={styles["slide"]}>
+                <Slider
+                  viewWidth={viewWidth}
+                  imgPreset={imgPreset}
+                  setImagePreset={setImagePreset}
+                  setSlideNum={setSlideNum}
+                  setControler={setControler}
+                />
+              </section>
+            </div>
+
             <button
+              id="open-button"
               className={styles["sp-menu__button"]}
-              onClick={(() => {
-                console.log("run!!!");
-              })()}
+              onClick={() => {
+                // menu_toggle_function();
+                setMenuState(!menuState);
+              }}
             >
               <div className={styles["sp-menu__stroke"]}></div>
               <div className={styles["sp-menu__stroke"]}></div>
               <div className={styles["sp-menu__stroke"]}></div>
+            </button>
+            <button
+              id="close-button"
+              className={`${styles["sp-menu__button"]} ${styles["sp-menu--close"]}`}
+              onClick={() => {
+                // menu_toggle_function();
+                setMenuState(!menuState);
+              }}
+            >
+              <div className={styles["sp-menu__stroke__close1"]}></div>
+              <div className={styles["sp-menu__stroke__close2"]}></div>
             </button>
           </>
         ) : (
@@ -76,6 +144,7 @@ export default function Home({ works }) {
               setSlideNum={setSlideNum}
               controler={controler}
               router={router}
+              id="pc_menu"
             ></Menu>
             <section className={styles["slide"]}>
               <Slider

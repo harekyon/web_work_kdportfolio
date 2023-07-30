@@ -10,9 +10,11 @@ export default function Menu({
   setSlideNum,
   controler,
   router,
+  id,
+  setMenuState,
 }) {
   return (
-    <section className={styles["menu"]}>
+    <section id={id} className={styles["menu"]}>
       <div className={styles["logo"]}>
         <Link href="./">DAIKI KATO</Link>
       </div>
@@ -25,6 +27,7 @@ export default function Menu({
                 onClick={() => {
                   setImagePreset(p.img);
                   setSlideNum(1);
+                  setMenuState(false);
                 }}
               >
                 {p.title}

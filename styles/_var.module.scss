@@ -8,6 +8,7 @@
 /*=======================*/
 $c-bg: #001727;
 $c-base: #1f1f1f;
+$c-accent: rgb(6, 62, 62);
 $c-pre1: #263947ff;
 $c-pre1-opacity: #26394799;
 
@@ -121,4 +122,6 @@ $easeInBack: cubic-bezier(0.36, 0, 0.66, -0.56);
 :export {
   c-bg: $c-bg;
   c-base: $c-base;
+  breakpoint: $breakpoint;
+  c-accent: $c-accent;
 }
