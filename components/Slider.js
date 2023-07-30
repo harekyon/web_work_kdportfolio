@@ -26,6 +26,7 @@ export default function Slider({
             {imgPreset.map((i, idx) => {
               return (
                 <img
+                  key={idx}
                   className={styles["slider__img"]}
                   src={i.url}
                   alt={`kd photo ${idx}`}

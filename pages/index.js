@@ -145,6 +145,7 @@ export default function Home({ works }) {
               controler={controler}
               router={router}
               id="pc_menu"
+              setMenuState={setMenuState}
             ></Menu>
             <section className={styles["slide"]}>
               <Slider
