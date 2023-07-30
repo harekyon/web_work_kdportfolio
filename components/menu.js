@@ -1,9 +1,4 @@
-import Head from "next/head";
-import Image from "next/image";
-import { Inter } from "next/font/google";
 import styles from "./menu.module.scss";
-import Slider from "@/components/Slider";
-import { useEffect, useState } from "react";
 import { css } from "@emotion/react";
 import Link from "next/link";
 
@@ -15,9 +10,11 @@ export default function Menu({
   setSlideNum,
   controler,
   router,
+  id,
+  setMenuState,
 }) {
   return (
-    <section className={styles["menu"]}>
+    <section id={id} className={styles["menu"]}>
       <div className={styles["logo"]}>
         <Link href="./">DAIKI KATO</Link>
       </div>
@@ -30,6 +27,7 @@ export default function Menu({
                 onClick={() => {
                   setImagePreset(p.img);
                   setSlideNum(1);
+                  setMenuState(false);
                 }}
               >
                 {p.title}
@@ -44,7 +42,13 @@ export default function Menu({
           margin-bottom: 30px;
         `}
       />
-      <nav className={styles["menu-photo-list"]}>
+      <nav
+        className={styles["menu-photo-list"]}
+        css={css`
+          pointer-events: none;
+          opacity: 0.3;
+        `}
+      >
         <li>
           <a onClick={() => router.push("/profile")}>PROFILE</a>
         </li>

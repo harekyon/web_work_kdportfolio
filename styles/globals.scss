@@ -1,3 +1,4 @@
+@use "./styles/_var.module.scss";
 * {
   box-sizing: border-box;
   margin: 0;
@@ -22,13 +23,37 @@ li {
 .main {
   display: flex;
   flex-direction: row;
+  @include var.mq(sp) {
+    flex-direction: column;
+  }
 }
 a {
   text-decoration: none;
+}
+html,
+body {
+  overflow-x: hidden;
+}
+body {
+  position: relative;
 }
 
 .splide__slide {
   img {
     padding: 20px;
+  }
+}
+.logo {
+  a {
+    font-size: 18px;
+    color: rgb(6, 62, 62);
+    // font-family: "Libre Barcode 39", cursive;
+    font-family: "Noto Serif", serif;
+    // font-family: "Bruno Ace SC", cursive;
+    // font-family: "Bad Script", cursive;
+  }
+  margin-bottom: 26px;
+  @include var.mq(sp) {
+    margin-bottom: 0px;
   }
 }

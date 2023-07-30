@@ -1,3 +1,4 @@
+@use "../styles/_var.module.scss";
 .slider {
   &--wrap {
     width: 100%;
@@ -12,6 +13,23 @@
     height: auto;
     max-height: 100vh;
     object-fit: contain;
-    // position: absolute;
+  }
+}
+@include var.mq(sp) {
+  .slider {
+    &--wrap {
+      height: auto;
+      padding: 10px;
+    }
+    &__img {
+      max-height: unset;
+    }
+  }
+  .sp_image {
+    &--wrap {
+      display: flex;
+      flex-direction: column;
+      row-gap: 20px;
+    }
   }
 }

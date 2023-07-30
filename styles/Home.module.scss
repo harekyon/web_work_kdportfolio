@@ -1,4 +1,50 @@
+@use "../styles/_var.module.scss";
 .slide {
   flex-grow: 1;
   // background: cadetblue;
+}
+.sp-menu {
+  &__button {
+    width: 100%;
+    height: 50px;
+    background: #ffffffee;
+    border: unset;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 15;
+    @include var.flexCenter();
+    flex-direction: column;
+    row-gap: 5px;
+    transition: 0.8s cubic-bezier(0.49, -0.01, 0, 0.99);
+  }
+  &__stroke {
+    width: 30px;
+    border: solid 1px var.$c-accent;
+    border-radius: 3px;
+    &__close1,
+    &__close2 {
+      width: 30px;
+      border: solid 1px var.$c-accent;
+      border-radius: 3px;
+      transform-origin: center;
+      position: absolute;
+    }
+    &__close1 {
+      transform: rotate(45deg);
+    }
+    &__close2 {
+      transform: rotate(-45deg);
+    }
+  }
+  &--close {
+    bottom: -50px;
+  }
+}
+.open-button-exe-animTotop {
+  // transition: 0.8s cubic-bezier(0.49, -0.01, 0, 0.99);
+  bottom: calc(100vh);
+}
+.close-button-exe-animTotop {
+  bottom: 0px;
 }
