@@ -52,6 +52,14 @@
     }
   }
 }
+.logo {
+  // text-align: center;
+  margin-bottom: 40px;
+  a {
+    @include var.font(16, 1.5, 0.05, 400);
+    font-family: "Noto Serif", serif;
+  }
+}
 
 @include var.mq(sp) {
   .menu {
