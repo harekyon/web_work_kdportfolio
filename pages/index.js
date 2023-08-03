@@ -97,7 +97,20 @@ export default function Home({ works }) {
                 router={router}
                 id="sp_menu"
                 setMenuState={setMenuState}
-              ></Menu>
+              >
+                <button
+                  id="open-button"
+                  className={styles["sp-menu__button"]}
+                  onClick={() => {
+                    // menu_toggle_function();
+                    setMenuState(!menuState);
+                  }}
+                >
+                  <div className={styles["sp-menu__stroke"]}></div>
+                  <div className={styles["sp-menu__stroke"]}></div>
+                  <div className={styles["sp-menu__stroke"]}></div>
+                </button>
+              </Menu>
               <></>
               <section className={styles["slide"]}>
                 <Slider
@@ -110,7 +123,7 @@ export default function Home({ works }) {
               </section>
             </div>
 
-            <button
+            {/* <button
               id="open-button"
               className={styles["sp-menu__button"]}
               onClick={() => {
@@ -121,7 +134,7 @@ export default function Home({ works }) {
               <div className={styles["sp-menu__stroke"]}></div>
               <div className={styles["sp-menu__stroke"]}></div>
               <div className={styles["sp-menu__stroke"]}></div>
-            </button>
+            </button> */}
             <button
               id="close-button"
               className={`${styles["sp-menu__button"]} ${styles["sp-menu--close"]}`}
