@@ -12,9 +12,11 @@ export default function Menu({
   router,
   id,
   setMenuState,
+  children,
 }) {
   return (
     <section id={id} className={styles["menu"]}>
+      {children}
       <div className={styles["logo"]}>
         <Link href="./">DAIKI KATO</Link>
       </div>
